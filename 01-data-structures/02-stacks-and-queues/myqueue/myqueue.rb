@@ -4,15 +4,20 @@ class MyQueue
 
   def initialize
     @queue = Array.new
-    @head = @queue[0]
   end
 
   def enqueue(element)
+    @queue[@queue.length] = element
+    @tail = @queue.last
+    @head = @queue.first
   end
 
   def dequeue
+    @queue.delete(@queue[0])
+    @head = @queue.first
   end
 
   def empty?
+    @queue.length == 0 ? true : false
   end
 end
