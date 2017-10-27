@@ -23,7 +23,7 @@ class Screen
   private
 
   def inbounds(x, y)
-    x <= @width && y <= @height
+    x <= @width && y <= @height && x > 0 && y > 0
   end
 
 end
