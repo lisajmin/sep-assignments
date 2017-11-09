@@ -1,0 +1,16 @@
+1. What is Spatial Locality and why does it benefit performance?
+
+  Spatial locality is a process that occurs when the desired data is not found in the cached data. Instead of searching through RAM for the specific data, a range of data from RAM is moved to the cached. This can reduce the time for the computer to locate the data since it is faster to retrieve from the cache than reading from RAM. Ultimately, it will improve optimization.
+
+
+2. Compare the performance of an Array to a Linked List using the Benchmark module.
+
+user                 system      total        real
+create array         0.000000   0.000000   0.000000 (  0.003321)
+create linked list   0.010000   0.000000   0.010000 (  0.003522)
+user                 system      total        real
+access array         0.000000   0.000000   0.000000 (  0.000002)
+access linked list   0.000000   0.000000   0.000000 (  0.000002)
+user                 system      total        real
+remove array         0.000000   0.000000   0.000000 (  0.000002)
+remove linked list   0.000000   0.000000   0.000000 (  0.000370)
