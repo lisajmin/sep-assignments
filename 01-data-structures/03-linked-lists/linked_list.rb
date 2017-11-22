@@ -58,8 +58,9 @@ class LinkedList
 
   # This method adds `node` to the front of the list and must set the list's head to `node`.
   def add_to_front(node)
-    if @head == nil
+    if @head == nil && @tail == nil
       @head = node
+      @tail = node
     else
       node.next = @head
       @head = node
@@ -68,6 +69,11 @@ class LinkedList
 
   # This method removes and returns the first node in the Linked List and must set Linked List's head to the second node.
   def remove_front
-    @head = @head.next
+    if @tail == @head
+      @tail = nil
+      @head = nil
+    else
+      @head = @head.next
+    end
   end
 end
