@@ -2,33 +2,23 @@ require_relative 'node'
 
 class BinaryHeap
 
+  attr_accessor :temp
+
   def initialize(root)
     @root = root
   end
 
   def insert(root, node)
     if root.rating > node.rating
-      if @root == root
-        temp = root
-        node.parent = nil
-        @root = node
-        insert(@root, temp)
-      else
-        parent = root.parent
-        if parent.left == root
-          parent.left = node
-        elsif parent.right == root
-          parent.right = node
-        end
-        insert(node, root)
-      end
+      temp = root.dup
+      root.rating = node.rating
+      root.title = node.title
+      insert(root, temp)
     else
       if root.right == nil
         root.right = node
-        node.parent = root
       elsif (root.left == nil) && (root.right != nil)
         root.left = node
-        node.parent = root
       elsif (root.left != nil) && (root.right != nil) && (root.right.right != nil) && (root.right.left != nil)
         insert(root.left, node)
       elsif (root.left != nil) && (root.right != nil)

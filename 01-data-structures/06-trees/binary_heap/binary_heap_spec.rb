@@ -27,7 +27,7 @@ RSpec.describe BinaryHeap, type: Class do
 
     it "properly inserts a new node and it swaps with the root" do
       heap.insert(root, braveheart)
-      expect(braveheart.right.title).to eq root.title
+      expect(root.title).to eq "Braveheart"
     end
 
     it "properly inserts a new node as a right child" do
@@ -83,6 +83,40 @@ RSpec.describe BinaryHeap, type: Class do
       heap.insert(root, mad_max_2)
       expect(heap.find(root, nil)).to eq nil
     end
+
+    it "properly finds a left node" do
+      heap.insert(root, pacific_rim)
+      expect(heap.find(root, pacific_rim.title).title).to eq "Pacific Rim"
+    end
+
+    it "properly finds a left-left node" do
+      heap.insert(root, braveheart)
+      heap.insert(root, pacific_rim)
+      expect(heap.find(root, pacific_rim.title).title).to eq "Pacific Rim"
+    end
+
+    it "properly finds a left-right node" do
+      heap.insert(root, donnie)
+      heap.insert(root, inception)
+      expect(heap.find(root, inception.title).title).to eq "Inception"
+    end
+
+    it "properly finds a right node" do
+      heap.insert(root, district)
+      expect(heap.find(root, district.title).title).to eq "District 9"
+    end
+
+    it "properly finds a right-left node" do
+      heap.insert(root, hope)
+      heap.insert(root, martian)
+      expect(heap.find(root, martian.title).title).to eq "The Martian"
+    end
+
+    it "properly finds a right-right node" do
+      heap.insert(root, empire)
+      heap.insert(root, mad_max_2)
+      expect(heap.find(root, mad_max_2.title).title).to eq "Mad Max 2: The Road Warrior"
+    end
   end
 
   describe "#delete(data)" do
@@ -95,20 +129,57 @@ RSpec.describe BinaryHeap, type: Class do
       heap.delete(root, hope.title)
       expect(heap.find(root, hope.title)).to be_nil
     end
+
+    it "properly deletes a left-left node" do
+      heap.insert(root, braveheart)
+      heap.insert(root, pacific_rim)
+      heap.delete(root, pacific_rim.title)
+      expect(heap.find(root, pacific_rim.title)).to be_nil
+    end
+
+    it "properly deletes a left-right node" do
+      heap.insert(root, donnie)
+      heap.insert(root, inception)
+      heap.delete(root, inception.title)
+      expect(heap.find(root, inception.title)).to be_nil
+    end
+
+    it "properly deletes a right node" do
+      heap.insert(root, district)
+      heap.delete(root, district.title)
+      expect(heap.find(root, district.title)).to be_nil
+    end
+
+    it "properly deletes a right-left node" do
+      heap.insert(root, hope)
+      heap.insert(root, martian)
+      heap.delete(root, martian.title)
+      expect(heap.find(root, martian.title)).to be_nil
+    end
+
+    it "properly deletes a right-right node" do
+      heap.insert(root, empire)
+      heap.insert(root, mad_max_2)
+      heap.delete(root, mad_max_2.title)
+      expect(heap.find(root, mad_max_2.title)).to be_nil
+    end
   end
 
   describe "#print" do
-    it "should print" do
-      heap.insert(root, mad_max_2)
-      heap.insert(root, district)
-      heap.insert(root, shawshank)
-      heap.insert(root, braveheart)
-      heap.insert(root, inception)
-      heap.insert(root, pacific_rim)
-      heap.insert(root, martian)
-      heap.insert(root, jedi)
-      heap.insert(root, empire)
+    specify {
+      expected_output = "Pacific Rim: 72\nBraveheart: 78\nThe Matrix: 87\nInception: 86\nStar Wars: Return of the Jedi: 80\nThe Martian: 92\nStar Wars: A New Hope: 93\nMad Max 2: The Road Warrior: 98\nDistrict 9: 90\nThe Shawshank Redemption: 91\nStar Wars: The Empire Strikes Back: 94\n"
       heap.insert(root, hope)
-   end
+      heap.insert(root, empire)
+      heap.insert(root, jedi)
+      heap.insert(root, martian)
+      heap.insert(root, pacific_rim)
+      heap.insert(root, inception)
+      heap.insert(root, braveheart)
+      heap.insert(root, shawshank)
+      heap.insert(root, district)
+      heap.insert(root, mad_max_2)
+      heap.printf()
+      expect { heap.printf }.to output(expected_output).to_stdout
+    }
   end
 end
