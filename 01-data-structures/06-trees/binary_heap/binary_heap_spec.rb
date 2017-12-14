@@ -166,6 +166,22 @@ RSpec.describe BinaryHeap, type: Class do
       heap.delete(root, mad_max_2.title)
       expect(heap.find(root, mad_max_2.title)).to be_nil
     end
+
+    it "deletes correctly" do
+      heap.insert(root, hope)
+      heap.insert(root, empire)
+      heap.insert(root, jedi)
+      heap.insert(root, martian)
+      heap.insert(root, pacific_rim)
+      heap.insert(root, inception)
+      heap.insert(root, braveheart)
+      heap.insert(root, shawshank)
+      heap.insert(root, district)
+      heap.insert(root, mad_max_2)
+      heap.delete(root, "Star Wars: Return of the Jedi")
+      expect(heap.find(root, "Star Wars: Return of the Jedi")).to be_nil
+      heap.printf()
+    end
   end
 
   describe "#print" do

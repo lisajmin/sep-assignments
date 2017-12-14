@@ -49,10 +49,10 @@ class BinaryHeap
       elsif parent.right == node
         parent.right = nil
       end
-      if node.left != nil
+      if node && node.left
         reorder(node.left)
       end
-      if node.right != nil
+      if node && node.right
         reorder(node.right)
       end
     end
@@ -61,14 +61,14 @@ class BinaryHeap
   def find(root, data)
     if root.nil? || data.nil?
       return nil
+    elsif root.title == data
+      return root
     else
-      if root.title == data
-        return root
-      elsif root.left != nil
-        find(root.left, data)
-      elsif root.right != nil
-        find(root.right, data)
+      node = find(root.right, data)
+      if node.nil?
+        node = find(root.left, data)
       end
+      return node
     end
   end
 
@@ -104,13 +104,26 @@ class BinaryHeap
 
   private
 
-  def find_parent(root, data)
-    if root.left == data || root.right == data
-      return root
-    elsif root.right != nil
-      find_parent(root.right, data)
-    elsif root.left != nil
-      find_parent(root.left, data)
+  def find_parent(root, node)
+    if root == nil
+      return nil
+    else
+      if root.left != nil
+        if root.left.title == node.title
+          return root
+        else
+          left_parent = find_parent(root.left, node)
+          return left_parent unless left_parent.nil?
+        end
+      end
+      if root.right != nil
+        if root.right.title == node.title
+          return root
+        else
+          right_parent = find_parent(root.right, node)
+          return right_parent unless right_parent.nil?
+        end
+      end
     end
   end
 
@@ -122,5 +135,6 @@ class BinaryHeap
     if target.right != nil
       insert(@root, target.right)
     end
+    target = nil
   end
 end
