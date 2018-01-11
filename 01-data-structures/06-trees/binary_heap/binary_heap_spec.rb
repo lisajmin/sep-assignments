@@ -197,6 +197,7 @@ RSpec.describe BinaryHeap, type: Class do
       heap.insert(root, shawshank)
       heap.insert(root, district)
       heap.insert(root, mad_max_2)
+      heap.delete(root, "Star Wars: A New Hope")
       heap.printf()
       #expect { heap.printf }.to output(expected_output).to_stdout
     }
