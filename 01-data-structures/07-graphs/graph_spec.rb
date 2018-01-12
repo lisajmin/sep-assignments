@@ -23,15 +23,18 @@ RSpec.describe Graph, type: Class do
   let (:jeff_bridges) { Node.new("Jeff Bridges") }
   let (:john_goodman) { Node.new("John Goodman") }
   let (:julianne_moore) { Node.new("Julianne Moore") }
+  let (:john_travolta) { Node.new("John Travolta") }
+  let (:samuel_l_jackson) { Node.new("Samuel L Jackson") }
 
   let (:graph) { Graph.new(kevin_bacon) }
 
   before (:each) do
       kevin_bacon.film_actor_hash["FootLoose"] = [lori_singer, john_lithgow, chris_penn, john_goodman]
-      bill_paxton.film_actor_hash["Appolo 13"] = [kevin_bacon, tom_hanks]
-      chris_penn.film_actor_hash["Resevoir Dogs"] = [steve_buscemi, harvey_keitel, tim_roth, tom_hanks]
+      bill_paxton.film_actor_hash["Apollo 13"] = [kevin_bacon, tom_hanks]
+      chris_penn.film_actor_hash["Reservoir Dogs"] = [steve_buscemi, harvey_keitel, tim_roth, tom_hanks]
       john_lithgow.film_actor_hash["Interstellar"] = [matthew_mcconaughey, anne_hathaway, lori_singer]
       steve_buscemi.film_actor_hash["The Big Lebowski"] = [jeff_bridges, john_goodman, julianne_moore]
+      tim_roth.film_actor_hash["Pulp Fiction"] = [john_travolta, samuel_l_jackson, steve_buscemi]
       julianne_moore.film_actor_hash["Crazy Stupid Love"] = [tim_roth, zoe_saldanas]
     end
 
@@ -56,6 +59,10 @@ RSpec.describe Graph, type: Class do
 
     it "returns an array of movies if there is a connection to Kevin Bacon" do
       expect{(graph.find_kevin_bacon(steve_buscemi))}.to output("[\"The Big Lebowski\", \"FootLoose\"]\n").to_stdout
+    end
+
+    it "returns an array of movies if there is a connection to Kevin Bacon" do
+      expect{(graph.find_kevin_bacon(tim_roth))}.to output("[\"Pulp Fiction\", \"The Big Lebowski\", \"FootLoose\"]\n").to_stdout
     end
   end
 end
