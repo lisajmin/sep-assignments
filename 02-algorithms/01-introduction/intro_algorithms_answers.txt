@@ -1,0 +1,28 @@
+1. Making coffee:
+SET kettle with water on stove
+SET mug, coffee dripper, and coffee
+IF water is boiling THEN
+  WHILE water level is below the height of the mug
+    Pour water onto coffee
+  END
+END
+
+2. Driving to work:
+SET pull out of driveway
+IF Fullerton St is reached THEN
+  Turn left
+IF Imperial St is reached THEN
+  Turn right
+IF Saturn St is reached THEN
+  Turn left
+END
+
+3. Throwing a ceramic vase on a wheel:
+SET clay on wheel
+UNTIL clay is prepped
+  Center clay on wheel
+END
+REPEAT
+  Pull clay upward
+UNTIL desired height and shape is reached
+END

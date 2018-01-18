@@ -20,7 +20,7 @@ class Graph
       end
     end
 
-    if @film_list.length >= 6 || start_actor.film_actor_hash.empty?
+    if @film_list.length >= 5 || start_actor.film_actor_hash.empty?
       return nil
     end
 
