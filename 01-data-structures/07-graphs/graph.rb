@@ -39,5 +39,4 @@ class Graph
       end
     end
   end
-
 end
