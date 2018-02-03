@@ -6,27 +6,27 @@ O(2n): Taking a bus with a transfer to work
 
 2. In plain English, what is the best case scenario for binary search?
 
-The best case scenario for a binary search will occur when the target value is found after the first search iteration.
+The best case scenario for a binary search will occur when the target value is found after the first search iteration. Since it is found within the first iteration, the function will return the value and exit. This is the most efficient instance for this binary search.
 
 
 3. In plain English, what is the worst-case scenario for binary search?
 
-The worst case scenario for a binary search will occur when the target value is found after the last search iteration.
+The worst case scenario for a binary search will occur when the target value is found after the last search iteration. The function would have to iteration through each data point before the function has finished. This would be the least efficient instance for this binary search.
 
 
 4. In plain English, what is the bounded-case scenario for binary search?
 
-The bounded case scenario for a binary search will occur when the target value is found after half of the search iterations have completed.
+A bounded-case scenario is between the best-case and worst-case. Most computations will occur between the best case and worst case scenarios. The bounded-case scenario is a better description of how the function will behave more often.
 
 
 6. What is the limit of the function above as n approaches infinity?
 
-f(n)= n log(n)
+n log(n)
 
 
 7. What is the Big-O of an algorithm that has the data points above?
 
-O(log(n))
+O(n log(n))
 
 
 8. Write a Ruby method that takes a number n. This method must print the worst-case number of iterations for linear search to find an item in collections of size one to n. Use it to generate a table of worst-case iterations of collections up to size 10.
