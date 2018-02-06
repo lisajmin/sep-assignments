@@ -21,12 +21,12 @@ A bounded-case scenario is between the best-case and worst-case. Most computatio
 
 6. What is the limit of the function above as n approaches infinity?
 
-n log(n)
+2^n
 
 
 7. What is the Big-O of an algorithm that has the data points above?
 
-O(n log(n))
+O(2^n)
 
 
 8. Write a Ruby method that takes a number n. This method must print the worst-case number of iterations for linear search to find an item in collections of size one to n. Use it to generate a table of worst-case iterations of collections up to size 10.
