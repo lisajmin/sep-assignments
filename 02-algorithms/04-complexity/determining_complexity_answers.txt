@@ -38,4 +38,4 @@ Elements (n):      Number of Operations(worst-case scenario):
 4                                    4
 5                                    5
 
-6. Big-O value is O(n^2). In a worst case scenario, the pivot is the smallest number in the array. The while loop will iterate through the entire array. However, no 'sorting' will occur since the pivot is the smallest number. All elements will remain to the left of the pivot. The Big-O for the while loop is O(n). Next, the function will call the algorithm again recursively from 'pivot + 1' to the end.  So, T(n) = T(n-1) + O(n) = O(n^2).
+6. Big-O value is O(n^2). In a worst case scenario, the pivot is the smallest number in the array. The while loop will iterate through the entire array. However, no 'sorting' will occur since the pivot is the smallest number. All elements will remain to the right of the pivot. The Big-O for the while loop is O(n). Next, the function will call the algorithm again recursively from 'pivot + 1' to the end.  So, T(n) = T(n-1) + O(n) = O(n^2).
